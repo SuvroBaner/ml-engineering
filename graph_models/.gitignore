@@ -3,3 +3,4 @@
 *.pkl
 *checkpoint*
 embeddings*
+*.csv
