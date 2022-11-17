@@ -1,0 +1,20 @@
+Git Repository - 
+
+1. NLP with transformers : https://github.com/nlp-with-transformers/notebooks
+
+Research Papers -
+
+1. 2017 : "Attention is All You Need" : https://arxiv.org/abs/1706.03762 || Sequence Modeling task, transformer architecture
+2. 2018 : "ULMFiT (Universal Language Model Fine-Tuning for Text Classification)" :  https://arxiv.org/abs/1801.06146 || Effective Transfer Learning using LSTM
+3. 2018 : "Improving Language Understanding with Unsupervised Learning (GPT - Generative Pre-trained transformer) : https://openai.com/blog/language-unsupervised/
+4. 2018 : "Bidirectional Encoder Representations from Transformers (BERT)" : https://arxiv.org/abs/1810.04805
+5. 2014 : "Sequence to Sequence Learning with Neural Networks" : https://arxiv.org/abs/1409.3215
+6. 2016 : "Neural Machine Trnslation by Jointly Learning to Align and Translate" : https://arxiv.org/abs/1409.0473
+7. 2019 : "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" :  https://arxiv.org/abs/1910.01108
+8. 2012 : "Japanese and Korean voice search" (Wordpiece) : https://ieeexplore.ieee.org/document/6289079
+9. 2018 : UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction (https://arxiv.org/abs/1802.03426)
+
+Blogs -
+
+1. The Unreasonable Effectiveness of Recurrent Neural Networks : http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+

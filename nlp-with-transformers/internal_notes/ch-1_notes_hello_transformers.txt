@@ -1,0 +1,22 @@
+1. The encoder-decoder framework using LSTMs
+2. Final hidden state of the encoder creates an information bottleneck.
+3. Using Attention Mechanism we can get around this by giving access to the decoder all the intermediate hidden states of the encoder. Attention helps prioritize which states to give more weights to.
+4. Computations are inherently sequential 
+5. With transformer there is an emergence of self-attention mechanism.
+6. Transfer Learning : 
+    a. Pretraining (predict next word in Wikitext 103 : Language Model)
+    b. Domain Adaptation (predict the next word in a specific domain like say IMDb)
+    c. Fine-Tuning (The language model is used to fine-tune with a classification layer for the target task, say predicting movie sentiment)
+7. GPT : Using decoder part of the Transformer Architecture
+8. BERT : Using the encoder part of the Transformer Architecture
+9. Most common NLP tasks -
+    a. Text Classification
+    b. Named Entity Recognition
+    c. Question Answering
+    d. Summarization
+    e. Translation
+    f. Text Generation
+    g. Masked Language Modeling
+    h. Causal Language Modeling
+
+

@@ -1,0 +1,13 @@
+1. Some usecases for text classification task -
+    a. Tagging Customer Feedback into categories
+    b. Routing support tickets
+    c. Spam Filter
+    d. Sentiment Analysis from Twitter Post
+    e. Emotion Classification
+
+2. Dataset : How emotions are represented in English Twitter messages. 
+CARER : Contextualized Affect Representations for Emotion Recognition (https://aclanthology.org/D18-1404/)
+
+3. Taking a closer look at the data : https://karpathy.github.io/2019/04/25/recipe/
+
+4. Imbalancedlearn library (https://imbalanced-learn.org/stable/)
