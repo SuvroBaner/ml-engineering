@@ -5,3 +5,5 @@ matplotlib
 ipywidgets
 # Classification
 umap-learn==0.5.1
+# Transformer Anatomy
+bertviz==1.2.0

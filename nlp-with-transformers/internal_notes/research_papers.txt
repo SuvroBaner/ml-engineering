@@ -12,7 +12,9 @@ Research Papers -
 6. 2016 : "Neural Machine Trnslation by Jointly Learning to Align and Translate" : https://arxiv.org/abs/1409.0473
 7. 2019 : "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" :  https://arxiv.org/abs/1910.01108
 8. 2012 : "Japanese and Korean voice search" (Wordpiece) : https://ieeexplore.ieee.org/document/6289079
-9. 2018 : UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction (https://arxiv.org/abs/1802.03426)
+9. 2018 : "UMAP: Uniform Manifold Approximation and Projection for Dimension Reduction" (https://arxiv.org/abs/1802.03426)
+10. 2019 : "Text Summarization with Pretrained Encoder" (https://arxiv.org/abs/1908.08345)
+
 
 Blogs -
 
