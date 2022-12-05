@@ -1,0 +1,240 @@
+------------------ Example ------------------
+
+1. A scratch on a mobile phone detection in production. Edge device (inside the factory) and detect the defects.
+Automated Visual Defect Inspection
+
+camera - > take an image of the phone -> makes an api call to the prediction server which will detect if the phone has defect or not -> returns the response. -> control software to detect if it is accepted or not.
+
+The prediction server may be in cloud or in edge.
+
+There can still be lot of challenges to make this deployment good -
+
+a. Lighting condition in factory might have changed since the time you have trained the model. So, the same scratch on the phone looks very blurr.
+This can be attributed to a set of problems called Concept Drift or Data Drift.
+
+2. POC to Production Gap
+
+a. Configuration
+b. Data Collection
+c. Feature Extraction
+d. Data Verification
+e. Analysis Tool
+f. Process Management Tool
+g. Serving Infrastructure
+h. Monitoring
+
+D.Sculley et. al. NIPS 2015: Hidden Technical Debt in Machine Learning Systems
+
+----------- Steps for ML Project ---------------
+
+1. Scoping => (Define Project)
+2. Data => (Define data and establish the baseline) + (Label and organize data)
+3. Modeling => (Select and train model) + (Perform Error Analysis)
+4. Deployment => (Deploy in production) + (Monitor & maintain the system)
+
+There is always a feedback loop from every step back to the previous steps.
+
+Case study : speech recognition system -
+
+1. Scoping -
+
+a. Decide to work on speech recognition for voice search
+b. Decide on key metrics -
+    i. Accuracy, latency, throughput (queries per second)
+c. Estimate resources and timeline to carry on this Project
+
+2. Define Data -
+
+a. Is the data labeled consistently
+b. How much silence before / after each clip 
+c. How do you perform volume normalization
+
+3. Modeling -
+
+a. Code (algorithm / model)
+b. Hyperparameters
+c. Data
+
+Note: In research / academia the data is often kept fixed and the code and hyperparameters are changed to get the best result.
+However, a product team in industry will keep the code fixed and then vary the data and hyperparameters to get the best result.
+
+4. Deployment -
+
+a. Mobile phone would be the edge device
+b. Inside that edge device, there will be a local software .
+c. That software will tap into the microphone to record what someone is saying (may be voice search)
+d. We will also use a VAD module (voice activity detection) which will detect when someone is speaking.
+e. Now only the output of VAD is sent to the "search api" of a prediction server which is sitting in the cloud.
+f. The prediction server returns both transcripts and the search results so that we can see what is detected and what was the transcript.
+
+One of the main issue one can get into is Concept Drift or Data Drift.
+
+e.g. say this speech recognition system is deployed and say it was trained on adult voices. Now, say over the time period you have more and more young uers using this system. This will bring down the performance of the system. These kind of things are called as Concept Drift or the Data Drift,
+where the data distribution changes.
+
+--------- Deployment ----------
+
+Training Set :
+
+a. Purchased Data
+b. Historical user data with transcripts.
+
+Test set :
+
+a. Data from a few months ago
+
+How has the data changed ? 
+
+-> It can be gradual like new words in English vocabulary
+-> Sudden change like during Covid19 pandemic a lot of credit card fraud system started not working properly.
+because the purchase pattern of individuals suddenly change. There were much more online shopping. There was a suddent shift to the data distribution.
+
+If the input distribution of the data changes we call that as Data Drift.
+If the dependent variable "Y" changes with respect to "X" we call that as Concept Drift.
+
+Let's say X is the size of the house and Y is the price of the house. Say, due to inflation the same sized house will have a higher price.
+This is the concept drift.
+The data drift would be if people started building much smaller houses or much larger houses, i.e. the size of the houses changes over time.
+
+Software Engineering Issues -
+
+a. Design choices for the Prediction Service
+    i. Realtime or Batch prediction
+    ii. Cloud vs Edge / Browser
+    iii. Compute Resources (CPU / GPU / Memory)
+    iv. Latency , Throughput (QPS)
+    v. Logging
+    vi. Security & Privacy
+
+
+Deployment Patterns -
+
+1. New product / capability
+    Start with a small amount of traffic and then gradually ramp it up.
+
+2. Automate / assist with manual task -
+    Already there are people working in a factory to mark whether a phone screen has a scratch or not.
+    But you are introducing a learning algorithm which automates this process.
+    Here, a shadow mode deployment takes advantage of this.
+
+3. Replace previus ML system 
+    Gradual ramp up with Monitoring
+    Rollback
+
+Canary Deployment -
+a. Roll out to a small fraction (say 5 %) of traffic initially.
+b. Monitor system and ramp up the traffic gradually.
+
+Blue green deployment -
+There is a router which switched from old to the new version.
+It is to enable a rollback.
+
+Degress of Automation -
+
+How much automation is needed. 
+a. Human only
+b. Shadow mode
+c. AI assistance
+d. Partial automation
+e. Full automation
+
+Monitoring --
+
+a. Monitoring dashboard
+    1. Server load
+    2. Fraction of non-null outputs
+    3. Frcation of missing input values
+
+Software Metrics 
+    Memory, compute, latency, throughput, server load
+
+Input Metrics (X)
+    Avg input length, Avg input volume, Num missing values, Avg image brightness
+
+Output Metrics (Y)
+    Times return ""(null), times user redoes search, times user switches to typing, Click through rate (CTR)
+
+Deployment is an iterative process 
+
+We can keep certain thresholds and if it goes beyond it, we raise an alarm
+
+Manual retraining
+Automatic retraining
+
+Pipeline monitring---
+
+Audio -> VAD (voice activity detection) -> Speech recognition system  -> generate the transcript
+
+Say, some cellphones might have VAD clip audio differently, leading to degraded performance
+
+User profile example -
+
+1. User data (e.g. clickstream)
+2. User profile (e.g. own's a car ? y/n/unknown)
+3. Recommender system
+4. Product recommendations
+
+if clickstream data changes, then there is a high chance that the number of "unknown" changes which will impact the recommender system output yielding to a wrong product recommendations.
+
+Metrics to monitor -
+
+1. Software metrics
+2. Input metrics
+3. Output metrics
+4. How quickly to the data change
+
+
+Examples -
+
+Question 2
+On a new social media platform, you’re rolling out a new anti-spam system to flag and hide spammy posts. Your team decides to roll out the anti-spam filter via a canary deployment, and roll it out to 1% of users initially. 
+
+
+You’re building a healthcare screening system, where you input a patient’s symptoms, and for the easy cases (such as an obvious case of the common cold) the system will give a recommendation directly, and for the harder cases it will pass the case on to a team of in-house doctors who will form their own diagnosis independently. 
+
+Question 4
+You have built and deployed an anti-spam system that inputs an email and outputs either 0 or 1 based on whether the email is spam.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
